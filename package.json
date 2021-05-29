@@ -26,8 +26,15 @@
     "typescript": "^4.3.2"
   },
   "keywords": [
-    "clasp", "google-apps-script", "gas", "typescript",
-    "rollup-js", "prettier", "eslint", "javascript", "babel"
+    "clasp",
+    "google-apps-script",
+    "gas",
+    "typescript",
+    "rollup-js",
+    "prettier",
+    "eslint",
+    "javascript",
+    "babel"
   ],
   "author": "cristobalgvera",
   "license": "ISC"

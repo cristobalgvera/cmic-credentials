@@ -1,5 +1,5 @@
-import {hi} from './services/hello.service';
+import {getRegistries} from './services/registries.service';
 
-function sayHi() {
-  hi('CLASP');
+function createCredentials() {
+  const registries = getRegistries();
 }
