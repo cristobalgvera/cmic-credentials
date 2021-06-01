@@ -4,6 +4,6 @@ export const CONFIG = {
     SHEET_NAME: 'Consolidated',
   },
   CREDENTIALS_FOLDER: {
-    ID: '1mpisevc_kZbqFBCAPnyEHI-5_mPcOMvi',
+    ID: '1aK8WVPdWwLLbddJuceaBtum2TNRs3h3c',
   },
 };

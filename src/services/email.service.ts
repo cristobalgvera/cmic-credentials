@@ -5,14 +5,21 @@ export const sendEmails = (registries: Registry[]) => {
     ({email, credential}) => !!email && !!credential
   );
 
+  const confirmationHtml = HtmlService.createTemplateFromFile(
+    'app/assets/confirmation.html'
+  );
+
   toSendEmailRegistries.slice(0, 2).forEach(({email, name, credential}) => {
+    const firstName = name.split(' ')[0].trim();
+    confirmationHtml.firstName = firstName;
+    const htmlBody = confirmationHtml.evaluate().getContent();
+
     MailApp.sendEmail({
       to: 'd.corcuera01@ufromail.cl',
-      cc: 'cristobalgajardo.v@gmail.com',
-      subject: 'TEST EMAIL',
-      body: 'TEST BODY',
-      name: 'TEST NAME',
+      subject: '✨ Comenzó C-MIC ✨',
+      name: 'NUMIC',
       attachments: [credential.getAs(MimeType.PDF)],
+      htmlBody,
     });
   });
 };

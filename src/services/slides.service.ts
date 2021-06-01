@@ -10,7 +10,7 @@ export const joinCredentials = (registries: Registry[]) => {
   while (credentials.hasNext()) {
     const credential = credentials.next();
     const filename = credential.getName();
-    const credentialId = filename.split(' - ')[0];
+    const credentialId = filename.split(' - ')[0]; // Credential name must be 'C-000 - REGISTRY_NAME'
 
     const registry = registries.find(({id}) => id === credentialId); // IDs will be uniques
 
