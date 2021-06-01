@@ -9,7 +9,7 @@ export const sendEmails = (registries: Registry[]) => {
     'app/assets/confirmation.html'
   );
 
-  const mailedRegistries = filteredRegistries.slice(0, 2).map(registry => {
+  const mailedRegistries = filteredRegistries.map(registry => {
     const {email, name, credential, id} = registry;
     const firstName = name.split(' ')[0].trim();
     confirmationHtml.firstName = firstName;
