@@ -6,4 +6,5 @@ export interface Registry {
   name: string;
   pdfId: string;
   credential?: File;
+  notified?: boolean;
 }

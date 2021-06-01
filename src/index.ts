@@ -1,7 +1,9 @@
 import {sendEmails} from './services/email.service';
-import {getRegistries} from './services/registries.service';
+import {getRegistries, updateRegistries} from './services/registries.service';
 
 function createCredentials() {
   const registries = getRegistries();
-  sendEmails(registries);
+  const mailedRegistries = sendEmails(registries);
+
+  updateRegistries(mailedRegistries);
 }
