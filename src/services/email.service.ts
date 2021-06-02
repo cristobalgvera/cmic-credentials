@@ -55,7 +55,7 @@ export function sendDailyEmail(registries: Registry[]) {
   );
 
   const confirmationHtml = HtmlService.createTemplateFromFile(
-    'app/assets/confirmation.html'
+    'app/assets/second-day.html'
   );
   const mailedRegistries = filteredRegistries.map(registry => {
     const {email, name, id} = registry;
