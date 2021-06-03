@@ -55,7 +55,7 @@ export function sendDailyEmail(registries: Registry[]) {
   );
 
   const confirmationHtml = HtmlService.createTemplateFromFile(
-    'app/assets/second-day.html'
+    'app/assets/third-day.html'
   );
   const mailedRegistries = filteredRegistries.map(registry => {
     const {email, name, id} = registry;
@@ -69,7 +69,7 @@ export function sendDailyEmail(registries: Registry[]) {
       MailApp.sendEmail({
         // to: email,
         to: 'd.corcuera01@ufromail.cl',
-        subject: 'Segundo día C-MIC ⭐',
+        subject: 'Tercer día C-MIC 💙',
         name: 'NUMIC',
         htmlBody,
       });
