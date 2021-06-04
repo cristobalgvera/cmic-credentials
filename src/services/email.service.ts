@@ -55,12 +55,12 @@ export function sendDailyEmail(registries: Registry[]) {
   );
 
   const confirmationHtml = HtmlService.createTemplateFromFile(
-    'app/assets/third-day.html'
+    'app/assets/last-day.html'
   );
   const mailedRegistries = filteredRegistries.map(registry => {
     const {email, name, id} = registry;
-    const firstName = name.split(' ')[0].trim();
-    confirmationHtml.firstName = firstName;
+    // const firstName = name.split(' ')[0].trim();
+    // confirmationHtml.firstName = firstName;
     const htmlBody = confirmationHtml.evaluate().getContent();
 
     console.log(`Sending email to ${email} - ID: ${id}, Name: ${name}`);
@@ -69,7 +69,7 @@ export function sendDailyEmail(registries: Registry[]) {
       MailApp.sendEmail({
         // to: email,
         to: 'd.corcuera01@ufromail.cl',
-        subject: 'Tercer día C-MIC 💙',
+        subject: 'Último día C-MIC 🔥',
         name: 'NUMIC',
         htmlBody,
       });
