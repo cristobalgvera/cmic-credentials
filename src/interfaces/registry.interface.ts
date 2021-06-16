@@ -5,6 +5,6 @@ export interface Registry {
   email: string;
   name: string;
   pdfId: string;
-  credential?: File;
+  file?: File;
   notified?: boolean;
 }

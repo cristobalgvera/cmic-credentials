@@ -1,13 +1,14 @@
-import {
-  sendCredential,
-  sendDailyEmail,
-  sendEmailsOn,
-} from './services/email.service';
+import {sendFile, sendDailyEmail, sendEmailsOn} from './services/email.service';
+import {getToSendCertificateRegistries} from './services/registries.service';
 
 function sendCredentials() {
-  sendEmailsOn(sendCredential);
+  sendEmailsOn(sendFile);
 }
 
 function sendDailyEmails() {
   sendEmailsOn(sendDailyEmail);
+}
+
+function sendCertificates() {
+  sendEmailsOn(sendFile, getToSendCertificateRegistries);
 }

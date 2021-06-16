@@ -2,27 +2,32 @@ import {Registry} from '../interfaces/registry.interface';
 import {getRegistries, updateRegistries} from './registries.service';
 
 export function sendEmailsOn(
-  emailSendFunction: (registries: Registry[]) => Registry[]
+  emailSendFunction: (registries: Registry[]) => Registry[],
+  getRegistriesFunction?: () => Registry[]
 ) {
-  const registries = getRegistries();
+  const registries = getRegistriesFunction
+    ? getRegistriesFunction()
+    : getRegistries();
+
   const mailedRegistries = emailSendFunction(registries);
 
   updateRegistries(mailedRegistries);
 }
 
-export const sendCredential = (registries: Registry[]) => {
+export const sendFile = (registries: Registry[]) => {
   const filteredRegistries = registries.filter(
-    ({email, credential, notified}) => !!email && !!credential && !notified
+    ({email, file, notified}) => !!email && !!file && !notified
   );
 
   const confirmationHtml = HtmlService.createTemplateFromFile(
-    'app/assets/confirmation.html'
+    'app/assets/certificate.html'
   );
 
   const mailedRegistries = filteredRegistries.map(registry => {
-    const {email, name, credential, id} = registry;
+    const {email, name, file, id, pdfId} = registry;
     const firstName = name.split(' ')[0].trim();
     confirmationHtml.firstName = firstName;
+    confirmationHtml.fileId = pdfId;
     const htmlBody = confirmationHtml.evaluate().getContent();
 
     console.log(`Sending email to ${email} - ID: ${id}, Name: ${name}`);
@@ -31,9 +36,9 @@ export const sendCredential = (registries: Registry[]) => {
       MailApp.sendEmail({
         // to: email,
         to: 'd.corcuera01@ufromail.cl',
-        subject: '✨ Comenzó C-MIC ✨',
+        subject: 'Certificado de participación C-MIC 💙',
         name: 'NUMIC',
-        attachments: [credential.getAs(MimeType.PDF)],
+        // attachments: [file.getAs(MimeType.PDF)],
         htmlBody,
       });
 
